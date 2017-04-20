@@ -1,27 +1,22 @@
-from sys import argv   # import argv
-from os.path import exists # import exists from os.path
-#import matplotlib.pyplot as plt
-
-script, from_file, to_file = argv # unpack into three string arguments
-
-print "Copying from %s to %s" % (from_file, to_file) # print with to str format
-
-# we could do these two on one line too, how?
-in_file = open(from_file)
-indata = in_file.read()
-
-print "The input file is %d bytes long" % len(indata)
-
-print "Does the output file exist? %r" % exists(to_file) #exist with str argument
-print "Ready, hit RETURN to continue, CTRL-C to abort."
-raw_input()
-
-out_file = open(to_file, 'w')
-out_file.write(indata)
-
-print "Alright, all done."
-
-out_file.close()
-in_file.close()
-
-
+# this one is like your scripts with argv
+def print_two(*args):
+	arg1, arg2 = args	
+	print "arg1: %r, arg2: %r"  % (arg1, arg2)
+	
+# ok. that *args is actually pointless, we can just do this
+def print_two_again(arg1, arg2):
+	print "arg1: %r, arg2: %r" % (arg1, arg2)
+	
+# this just takes one argument
+def print_one(arg1):
+	print "arg1: %r" % arg1
+	
+# this one takes no arguments
+def print_none():
+	print "I got nothin'."
+	
+	
+print_two("Zed", "Shaw")
+print_two_again("Zed","Shaw")
+print_one("First!")
+print_none()
